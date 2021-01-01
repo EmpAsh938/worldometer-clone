@@ -1,0 +1,305 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 2rem;
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+button {
+  border: none;
+  background: rgb(185, 178, 178);
+  border-radius: 4px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+nav {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo {
+  margin-left: 5px;
+}
+
+.nav__title {
+  margin-left: 1em;
+  font-size: 1rem;
+  color: #ff9900;
+}
+
+.hero {
+  width: 80vw;
+  margin: 2em auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__title {
+  font-size: 1.19rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.hero__time {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.hero__info {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7em;
+}
+
+.hero__info__box {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+}
+
+.hero__info__box__title {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.hero__info__box__title__numbers {
+  margin-top: 10px;
+  font-size: 3rem;
+}
+
+.deaths {
+  color: #555;
+}
+
+.recover {
+  color: #8aca2b;
+}
+
+.hero__cases {
+  display: flex;
+  justify-content: center;
+  column-gap: 2em;
+}
+
+.hero__cases__closed,
+.hero__cases__active {
+  border: 1px solid rgb(212, 211, 211);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__cases__title {
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #666;
+  border-bottom: 1px solid rgb(212, 211, 211);
+  padding: 5px;
+  grid-column: 1/4;
+}
+
+.hero__cases__topbox {
+  padding: 10px;
+}
+
+.hero__cases__boldnum:first-child {
+  font-size: 1.3rem;
+}
+
+.hero__cases__bottombox {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero__cases__boldnum {
+  font-weight: 800;
+  color: #222;
+  font-size: 0.8rem;
+}
+
+.hero__cases__text {
+  color: #222;
+  font-size: 0.9rem;
+}
+
+.text-color-red {
+  color: red;
+}
+
+.text-color-blue {
+  color: #8080ff;
+}
+
+.text-color-green {
+  color: #8aca2b;
+}
+
+.table {
+  width: 90vw;
+  margin: 1em auto;
+}
+
+.table__tag {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.table__tag__title {
+  color: rgba(6, 13, 26, 0.95);
+  font-weight: 500;
+}
+
+.table__tag__text {
+  font-size: 0.97rem;
+  color: #222;
+}
+
+.table__tag__text__bold {
+  font-weight: bold;
+}
+
+.table__data {
+  display: flex;
+  flex-direction: column;
+}
+
+.table__data__input {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table__data__input__box {
+  position: relative;
+}
+
+.table__data__input__box__options {
+  display: none;
+  width: 160px;
+  position: absolute;
+  top: 110%;
+  background: #fff;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(59, 79, 116, 0.5);
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+  margin-left: 1em;
+}
+
+.table__data__input__form > label {
+  color: #333;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.table__data__input__form > input {
+  font-size: 1rem;
+  padding: 5px 2px;
+}
+
+.table__data__continents {
+  margin-top: 1.1rem;
+  display: flex;
+  column-gap: 1em;
+  flex-wrap: wrap;
+}
+
+.btn-continents {
+  font-size: 0.9rem;
+  background: rgb(211, 210, 210);
+  color: #555;
+  letter-spacing: 0.5px;
+  padding: 10px 15px;
+  margin-bottom: 0.5em;
+}
+
+.active-btn {
+  background: #666;
+  color: #fff;
+}
+
+.table__data__continents__box {
+  min-width: 100vw;
+  border-collapse: collapse;
+}
+
+.table__data__continents__box__head {
+  border: 1px solid rgb(194, 191, 191);
+  border-radius: 4px;
+  border-bottom: 2px solid #555;
+}
+
+.table__data__continents__box__head__row {
+}
+
+.table__data__continents__box__head__row__title {
+  border-right: 1px solid rgb(192, 190, 190);
+  padding: 5px 10px;
+  color: #222;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .hero__cases {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    column-gap: 0;
+  }
+
+  .hero__cases__closed,
+  .hero__cases__active {
+    width: 50vw;
+  }
+}
+
+@media (min-width: 1000px) {
+  .table__tag {
+    width: 80vw;
+    margin: auto;
+  }
+  .table__data__input {
+    width: 70%;
+    margin: auto;
+  }
+  .table__data__continents {
+    margin-left: 5em;
+  }
+}
