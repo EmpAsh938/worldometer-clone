@@ -1,5 +1,6 @@
 import Continents from "./Continents";
-import Options from "./Options";
+// import Options from "./Options";
+import { useGlobalContext } from '../context'
 
 const continents = [
   { id: 1, title: "All", isClicked: true },
@@ -8,7 +9,7 @@ const continents = [
   { id: 4, title: "Asia", isClicked: false },
   { id: 5, title: "South America", isClicked: false },
   { id: 6, title: "Africa", isClicked: false },
-  { id: 7, title: "Oceania", isClicked: false },
+  { id: 7, title: "Australia/Oceania", isClicked: false },
 ];
 const title = [
   { id: 1, name: "Total Cases", isTrue: true },
@@ -22,6 +23,8 @@ const title = [
 ];
 
 export default function Table() {
+  const { newCountries, allData, text, setText, handleClick, handleSubmit } = useGlobalContext()
+
   return (
     <section className="table">
       <article className="table__tag">
@@ -32,13 +35,13 @@ export default function Table() {
           The <span className="table__tag__text__bold">coronavirus</span>{" "}
           COVID-19 is affecting{" "}
           <span className="table__tag__text__bold">
-            218 countries and territories
+            218 newCountries and territories
           </span>{" "}
           around the world and 2 international conveyances.
           <span className="table__tag__text__bold">
             The day is reset after midnight GMT+0
           </span>
-          . The list of countries and territories and their continental regional
+          . The list of newCountries and territories and their continental regional
           classification is based on the{" "}
           <a href="https://unstats.un.org/unsd/methodology/m49/">
             United Nations Geoscheme
@@ -57,22 +60,22 @@ export default function Table() {
       </article>
       <article className="table__data">
         <div className="table__data__input">
-          <div className="table__data__input__box">
+          {/* <div className="table__data__input__box">
             <button className="table__data__input__box__btn">Columns</button>
             <div className="table__data__input__box__options">
               {title.map((item) => {
                 return <Options key={item.id} {...item} />;
               })}
             </div>
-          </div>
-          <form className="table__data__input__form">
+          </div> */}
+          <form onSubmit={handleSubmit} className="table__data__input__form">
             <label htmlFor="search">Search:</label>
-            <input type="text" name="search" id="search" />
+            <input value={text} onChange={e=>setText(e.target.value)} type="text" name="search" id="search" />
           </form>
         </div>
         <div className="table__data__continents">
           {continents.map((item) => {
-            return <Continents key={item.id} {...item} />;
+            return <Continents key={item.id} {...item} handleClick={handleClick}/>;
           })}
         </div>
         <table className="table__data__continents__box">
@@ -98,9 +101,58 @@ export default function Table() {
             </tr>
           </thead>
 
-          <tbody></tbody>
+          <tbody className="table__data__continents__box__body">
+            {newCountries ? newCountries.map((item, index) => {
+              const {
+                country,
+                cases,
+                todayCases,
+                deaths,
+                todayDeaths,
+                recovered,
+                active,
+                critical,
+                population
+              } = item
+              return (
+                <tr key={index} className="table__data__continents__box__body__row">
+                  <td className="table__data__continents__box__body__data">{index + 1}</td>
+                  <td className="table__data__continents__box__body__data">{country}</td>
+                  <td className="table__data__continents__box__body__data">{cases === 0 || cases}</td>
+                  <td className={todayCases === 0 ? 'table__data__continents__box__body__data': 'newCases table__data__continents__box__body__data'}>{todayCases === 0 || todayCases}</td>
+                  <td className="table__data__continents__box__body__data">{deaths === 0 || deaths}</td>
+                  <td className={todayDeaths === 0 ? 'table__data__continents__box__body__data' : 'newDeaths table__data__continents__box__body__data'}>{todayDeaths === 0 || todayDeaths}</td>
+                  <td className="table__data__continents__box__body__data">{recovered === 0 || recovered}</td>
+                  <td className="table__data__continents__box__body__data">{active === 0 || active}</td>
+                  <td className="table__data__continents__box__body__data">{critical === 0 || critical}</td>
+                  <td className="table__data__continents__box__body__data">{population}</td>
+                </tr>
+              )
+            }) 
+            : 
+            (<td>Loading...</td>)}
+          </tbody>
 
-          {/* <tfoot></tfoot> */}
+          <tfoot className="table__data__continents__box__foot">
+            <tr>
+              {allData ? (
+              <>
+              <td className="table__data__continents__box__body__data">{" "}</td>
+              <td className="table__data__continents__box__body__data foot-total">Total</td>
+              <td className="table__data__continents__box__body__data">{allData.cases}</td>
+              <td className="table__data__continents__box__body__data">{allData.todayCases}</td>
+              <td className="table__data__continents__box__body__data">{allData.deaths}</td>
+              <td className="table__data__continents__box__body__data">{allData.todayDeaths}</td>
+              <td className="table__data__continents__box__body__data">{allData.recovered}</td>
+              <td className="table__data__continents__box__body__data">{allData.active}</td>
+              <td className="table__data__continents__box__body__data">{allData.critical}</td>
+              <td className="table__data__continents__box__body__data">{allData.population}</td>
+              </>) : 
+              (
+                <td>Loading ...</td>
+              )}
+            </tr>
+          </tfoot>
         </table>
       </article>
     </section>

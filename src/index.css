@@ -276,6 +276,36 @@ nav {
   line-height: 1.5rem;
 }
 
+.table__data__continents__box__body {
+  /* border: 1px solid black; */
+}
+
+.table__data__continents__box__body__data {
+  border: 1px solid rgba(0, 0, 0, .3);
+  color: #222;
+  padding: 0 5px;
+}
+
+.newCases {
+  background: #99cf80;
+  color: #fff;
+}
+
+.newDeaths {
+  background: red;
+  color: #fff;
+}
+
+.table__data__continents__box__foot {
+  border: 2px solid rgb(150, 147, 147);
+}
+
+.foot-total {
+  font-weight: bold;
+  text-align: right;
+}
+
+
 @media (max-width: 800px) {
   .hero__cases {
     flex-direction: column;
